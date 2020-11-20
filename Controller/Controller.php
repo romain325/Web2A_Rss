@@ -11,7 +11,7 @@ class Controller {
 //debut
 
 //on initialise un tableau d'erreur
-        $dVueEreur = array ();
+        $dVueErreur = array ();
 
         try{
             $action=$_REQUEST['action'];
@@ -25,12 +25,12 @@ class Controller {
 
 
                 case "validationFormulaire":
-                    $this->ValidationFormulaire($dVueEreur);
+                    $this->ValidationFormulaire($dVueErreur);
                     break;
 
 //mauvaise action
                 default:
-                    $dVueEreur[] =	"Erreur d'appel php";
+                    $dVueErreur[] =	"Erreur d'appel php";
                     require ($rep.$Views['vuephp1']);
                     break;
             }
@@ -38,13 +38,13 @@ class Controller {
         } catch (PDOException $e)
         {
             //si erreur BD, pas le cas ici
-            $dVueEreur[] =	"Erreur inattendue!!! ";
+            $dVueErreur[] =	"Erreur inattendue!!! ";
             require ($rep.$Views['erreur']);
 
         }
         catch (Exception $e2)
         {
-            $dVueEreur[] =	"Erreur inattendue!!! ";
+            $dVueErreur[] =	"Erreur inattendue!!! ";
             require ($rep.$Views['erreur']);
         }
 

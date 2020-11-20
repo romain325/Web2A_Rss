@@ -1,0 +1,69 @@
+<?php
+
+require_once "../Utils/Config.php";
+global $Views;
+
+?>
+
+<!doctype html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>RSS Feed</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
+      <link rel="stylesheet" href="assets/css/global.css">
+      <link rel="stylesheet" href="assets/css/landing.css">
+  </head>
+  <body>
+    <nav>
+      <div class="logo"></div>
+      <ul class="menu">
+        <div class="menu__item toggle"><span></span></div>
+        <li class="menu__item"><a href="<?php echo $Views["login"] ?>" class="link link--dark"><i class="fa fa-lock"></i> Admin</a></li>
+        <li class="menu__item"><a href="" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
+      </ul>
+    </nav>
+    <div class="header">
+      <h1 class="header-title">DevRSS</h1>
+      <div>
+        <p class="header-description">Get the informations you need</p>
+        <p class="header-description">From a Simple and minimalistic interface to keep things efficient</p>
+        <p class="header-description">That's all</p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="articles">
+        <div class="article-item">
+          <h3 class="section-title"><a href="#">Fast & Light</a></h3>
+          <p>Start writing your notes immediately in any terminal! No more time wasted on navigating and opening your text editor.</p>
+          <p><small>Date</small></p>
+        </div>
+        <div class="article-item">
+          <h3 class="section-title">File Syncing</h3>
+          <p>Save your file in Dropbox then you can access to it from anywhere.</p>
+        </div>
+        <div class="article-item">
+          <h3 class="section-title">Secure</h3>
+          <p>Encrypt your notes optionally. No one can get to your secrets! </p>
+        </div>
+        <div class="article-item">
+          <h3 class="section-title">Configuration</h3>
+          <p>Maintain all your settings in a single <span class="code code-inline">config.json</span> file. Never need to redo the setting every single time jotting down a note.</p>
+          <p>16/10/2001 -- 04h30</p>
+        </div>
+        <div class="article-item">
+          <h3 class="section-title">Highlightings</h3>
+          <p>For better readability, scribbler has a clean, beautiful color scheme allow you to scan files fast.</p>
+        </div>
+        <div class="article-item">
+          <h3 class="section-title">Keybindings</h3>
+          <p>You can expect common keybindings for scribbler. Customize <span class="code code-inline">bindings.json</span> for your own liking! </p>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">RSS News Site created by <a href="https://github.com/romain325">Romain OLIVIER</a> and <a href="#">Augustin LABORIE</a></footer>
+  </body>
+</html>

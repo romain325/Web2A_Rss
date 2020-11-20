@@ -1,7 +1,7 @@
 <?php
 
 //chargement config
-require_once(__DIR__.'/config/config.php');
+require_once(__DIR__.'/Utils/Config.php');
 
 //autoloader conforme norme PSR-0
 require_once(__DIR__.'/Utils/SplClassLoader.php');

@@ -1,12 +1,17 @@
 <?php
 $rep=__DIR__.'/../';
 
-$BDuser = "Rom1";
-$BDPwd = "Rom1";
-$BDBase = "Rom1";
+$DBData = array(
+    "User" => "romain",
+    "Password" => "romain",
+    "BaseName" => "projetrss"
+);
+$DBData["dsn"] = "mysql:host=localhost;dbname=".$DBData["BaseName"];
 
 $Views = array(
-            "main" => 'View/main.php',
-            "Err" => 'View/erreur.php',
-            "404" => 'View/404.php'
+            "main" => 'index.php',
+            "login" => 'login.php',
+            "Err" => 'erreur.php',
+            "404" => '404.php',
+            "admin" => 'admin.php'
         );
