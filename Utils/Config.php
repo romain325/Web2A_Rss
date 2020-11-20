@@ -1,6 +1,7 @@
 <?php
 $rep=__DIR__.'/../';
 
+//Of course those are not the real creds so don't spend time trying ;))
 $DBData = array(
     "User" => "romain",
     "Password" => "romain",
