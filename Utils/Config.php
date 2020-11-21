@@ -1,18 +1,42 @@
 <?php
-$rep=__DIR__.'/../';
 
-//Of course those are not the real creds so don't spend time trying ;))
-$DBData = array(
-    "User" => "romain",
-    "Password" => "romain",
-    "BaseName" => "projetrss"
-);
-$DBData["dsn"] = "mysql:host=localhost;dbname=".$DBData["BaseName"];
+class Config {
+    public static $MainDir=__DIR__.'/../';
+    public static $ViewDir="View/";
+    private static $AssetsDir="assets/";
 
-$Views = array(
-            "main" => 'index.php',
-            "login" => 'login.php',
-            "Err" => 'erreur.php',
-            "404" => '404.php',
-            "admin" => 'admin.php'
-        );
+    public static $Repo="https://gitlab.iut-clermont.uca.fr/roolivier1/Web2A";
+
+    //Of course those are not the real creds so don't spend time trying ;))
+    public static $DBData = array(
+        "User" => "romain",
+        "Password" => "romain",
+        "BaseName" => "projetrss",
+        "Server" => "localhost"
+    );
+
+
+    public static $Views = array(
+        "main" => 'index.php',
+        "login" => 'login.php',
+        "Err" => 'erreur.php',
+        "404" => '404.php',
+        "admin" => 'admin.php'
+    );
+
+    public static function getDSN() : string{
+        return "mysql:host=".self::$DBData["Server"].";dbname=".self::$DBData["BaseName"];
+    }
+
+    public static function getView($name) : string{
+        if(!array_key_exists($name,self::$Views)){
+            $name = "main";
+        }
+        return self::$MainDir.self::$ViewDir.self::$Views[$name];
+    }
+
+    public static function getAssetsDir(){
+        return self::$ViewDir.self::$AssetsDir;
+    }
+}
+

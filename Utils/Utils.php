@@ -1,18 +1,17 @@
 <?php
 
 namespace Web2A\Utils;
-require_once "Config.php";
 
+
+use Config;
 
 class Utils{
     public static function checkConnected(string $redirectView){
-        global $Views;
-        if(!array_key_exists($redirectView,$Views)){
+        if(!array_key_exists($redirectView, Config::$Views)){
             $redirectView = "main";
         }
-        session_start();
-        if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] !== true){
-            header("location: ".$Views[$redirectView]);
+        if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
+            header("location: ./?page=admin");
         }
     }
 

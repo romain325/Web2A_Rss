@@ -8,14 +8,8 @@ use DateTime;
 use Exception;
 use PDO;
 use Web2A\Model\NewsModel;
-use Web2A\Utils\DbConnect;
 
-class NewsGateway {
-    private DbConnect $con;
-
-    public function __construct(string $dsn, string $username, string $password){
-        $this->con = new DbConnect($dsn, $username, $password);
-    }
+class NewsGateway extends Gateway {
 
     public function addNews(NewsModel $news) : bool{
         $query = "INSERT INTO `news`(`id`, `datepubli`, `site`, `titre`, `description`) VALUES (NULL,:datepubli,:site,:titre,:description)";

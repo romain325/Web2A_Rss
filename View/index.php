@@ -1,10 +1,3 @@
-<?php
-
-require_once "../Utils/Config.php";
-global $Views;
-
-?>
-
 <!doctype html>
 <html>
   <head>
@@ -14,16 +7,16 @@ global $Views;
       <title>RSS Feed</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
-      <link rel="stylesheet" href="assets/css/global.css">
-      <link rel="stylesheet" href="assets/css/landing.css">
+      <link rel="stylesheet" href="<?php echo Config::getAssetsDir(); ?>css/global.css">
+      <link rel="stylesheet" href="<?php echo Config::getAssetsDir(); ?>css/landing.css">
   </head>
   <body>
     <nav>
       <div class="logo"></div>
       <ul class="menu">
         <div class="menu__item toggle"><span></span></div>
-        <li class="menu__item"><a href="<?php echo $Views["login"] ?>" class="link link--dark"><i class="fa fa-lock"></i> Admin</a></li>
-        <li class="menu__item"><a href="" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
+        <li class="menu__item"><a href="./?page=login" class="link link--dark"><i class="fa fa-lock"></i> Admin</a></li>
+        <li class="menu__item"><a href="<?php echo Config::$Repo; ?>" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
       </ul>
     </nav>
     <div class="header">
