@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Web2A\Controller;
+namespace Web2A\Controller\Gateway;
 
 
 use DateTime;

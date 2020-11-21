@@ -8,7 +8,11 @@ use Exception;
 class Verification {
 
     public static function verifDbConnect($dsn, $username, $password) : bool {
-        return checkdnsrr($dsn) && (!empty($password)) && (!empty($username));
+        return self::verifDSN($dsn) && (!empty($password)) && (!empty($username));
+    }
+
+    private static function verifDSN($dsn){
+        return preg_match('(^mysql:host=[^;]+;dbname=[^;]+;(?:port=\d{2,4};)?(?:charset=[^;]+;)?$)', $dsn);
     }
 
     public static function verifNews($title, $description, $link,$date) : array {

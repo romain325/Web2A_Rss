@@ -27,7 +27,7 @@
 </div>
 <div class="wrapper">
     <h2>Login</h2>
-    <form action="<? echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form action="<? echo "./?page=login" ?>" method="post">
         <div class="form-group">
             <label>Username</label>
             <input type="text" name="username" class="form-control">

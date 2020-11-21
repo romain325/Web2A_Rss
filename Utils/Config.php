@@ -7,10 +7,9 @@ class Config {
 
     public static $Repo="https://gitlab.iut-clermont.uca.fr/roolivier1/Web2A";
 
-    //Of course those are not the real creds so don't spend time trying ;))
     public static $DBData = array(
-        "User" => "romain",
-        "Password" => "romain",
+        "User" => "rss",
+        "Password" => "projetrss",
         "BaseName" => "projetrss",
         "Server" => "localhost"
     );
@@ -25,7 +24,7 @@ class Config {
     );
 
     public static function getDSN() : string{
-        return "mysql:host=".self::$DBData["Server"].";dbname=".self::$DBData["BaseName"];
+        return "mysql:host=".self::$DBData["Server"].";dbname=".self::$DBData["BaseName"].";";
     }
 
     public static function getView($name) : string{

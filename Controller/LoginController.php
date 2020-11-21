@@ -4,6 +4,8 @@
 namespace Web2A\Controller;
 use Config;
 use Exception;
+use Web2A\Controller\Gateway\AdminGateway;
+use Web2A\Model\AdminModel;
 use Web2A\Utils\Utils;
 
 class LoginController extends Controller {
@@ -47,18 +49,16 @@ class LoginController extends Controller {
             return false;
         }
     }
-    // TODO Find why it returns home
+
+
     private function login(string $username, string $password){
         try {
-            global $DBData;
-            echo $DBData["dsn"];
-
-            $UserDb = new UserGateway($DBData["dsn"], $DBData["User"], $DBData["Password"]);
+            $UserDb = new AdminGateway(Config::getDSN(), Config::$DBData["User"], Config::$DBData["Password"]);
             $result = $UserDb->IsPasswordValid($username,$password);
             if($result == "username"){
                 $this->error["user"] = "Username not found";
             }elseif($result == "password"){
-                $this->error["pass"] = "Password Invalid";
+                $this->error["pass"] = "Enter a valid Password";
             }else{
                 $this->setConnected($result);
             }
@@ -69,12 +69,11 @@ class LoginController extends Controller {
     }
 
     private function setConnected(array $row){
-        global $Views;
         session_start();
         $_SESSION["loggedIn"] = true;
         $_SESSION["id"] = $row["id"];
         $_SESSION["username"] = $row["username"];
-        header("location: " . $Views["Admin"]);
+        header("location: ./?page=admin");
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace Web2A\Utils;
 
 use Exception;
+use PDO;
 
 class DbConnect extends PDO {
 

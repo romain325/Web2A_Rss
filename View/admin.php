@@ -1,13 +1,3 @@
-<?php
-
-use Web2A\Utils\Utils;
-
-require_once "../Utils/Utils.php";
-
-Utils::checkConnected("main");
-
-?>
-
 <!doctype html>
 <html>
 <head>
