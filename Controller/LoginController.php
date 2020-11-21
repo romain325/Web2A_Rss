@@ -15,6 +15,7 @@ class LoginController extends Controller {
     );
 
     public function __construct(){
+        parent::__construct();
         Utils::checkConnected("admin");
 
         $result = $this->getInfo();
@@ -71,8 +72,8 @@ class LoginController extends Controller {
     private function setConnected(array $row){
         session_start();
         $_SESSION["loggedIn"] = true;
-        $_SESSION["id"] = $row["id"];
-        $_SESSION["username"] = $row["username"];
+        $_SESSION["id"] = $row["ID"];
+        $_SESSION["username"] = $row["USERNAME"];
         header("location: ./?page=admin");
     }
 

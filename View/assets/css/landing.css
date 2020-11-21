@@ -56,34 +56,35 @@ nav {
   margin-top: 0.5rem;
 }
 
-/* changelog section */
-.changelog {
+/* lined section */
+.lined {
   background-color: var(--bg-color);
   padding: 2rem 0;
 }
 
-.changelog__item {
+.lined_item {
   display: flex;
 }
 
-.changelog__meta {
+.lined_meta {
   flex-basis: 25%;
 }
 
-.changelog__meta small {
+.lined_meta small {
   color: var(--primary-color-light);
   font-weight: 200;
   letter-spacing: 1px;
 }
 
-.changelog__title {
+.lined_title {
   margin-bottom: 0;
 }
 
-.changelog__callout {
+.lined_callout {
   margin: 3rem auto 2rem auto;
   text-align: center;
 }
+
 
 @media (max-width: 750px) {
   .tab__container > ul {
@@ -94,7 +95,7 @@ nav {
   .tab__container .code {
     margin-top: 2rem;
   }
-  .articles, .changelog__item {
+  .articles, .lined_item {
     flex-direction: column;
   }
   .article-item {

@@ -15,4 +15,10 @@ class Utils{
         }
     }
 
+    public static function ejectNotConnected(){
+        if(!isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] !== true){
+            header("location: ./?page=login");
+        }
+    }
+
 }

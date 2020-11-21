@@ -13,6 +13,8 @@ class Controller {
             switch ($_GET['page']){
                 case "login":
                     return new LoginController();
+                case "admin":
+                    return new AdminController();
                 default:
                     return new MainController($_GET['page']);
             }
@@ -75,12 +77,6 @@ class Controller {
         }
         exit(0);*/
     //}
-
-
-    function Reinit() {
-        //global $ViewDir,$Views;
-        //require ($ViewDir.$Views['main']);
-    }
 
     function ValidationFormulaire(array $dVueEreur) {
         global $ViewDir,$Views;

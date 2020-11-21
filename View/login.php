@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo Config::getAssetsDir() ?>css/global.css">
     <link rel="stylesheet" href="<?php echo Config::getAssetsDir() ?>css/landing.css">
+    <link rel="stylesheet" href="<?php echo Config::getAssetsDir() ?>css/form.css">
 </head>
 <body>
 <nav>
@@ -26,22 +27,52 @@
     </div>
 </div>
 <div class="wrapper">
-    <h2>Login</h2>
-    <form action="<? echo "./?page=login" ?>" method="post">
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" name="username" class="form-control">
-            <span><?php echo $this->getUserError();?></span>
+    <div class="lined">
+        <div class="wrapper">
+
+
+            <!--
+            <h2>Login</h2>
+            <form action="<? echo "./?page=login" ?>" method="post">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control">
+                    <span><?php echo $this->getUserError();?></span>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control">
+                    <span><?php echo $this->getPassError();?></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="button-primary" value="Login">
+                </div>
+            </form>
+            -->
+            <!-- Login FORM -->
+            <div class="lined_item login-box">
+                <form action="./?page=login" method="post">
+                    <div class="user-box">
+                        <input type="text" name="username" required="">
+                        <label>Username</label>
+                        <span><?php echo $this->getUserError();?></span>
+                    </div>
+                    <div class="user-box">
+                        <input type="password" name="password" required="">
+                        <label>Password</label>
+                        <span><?php echo $this->getPassError();?></span>
+                    </div>
+                    <a>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <input type="submit" value="Log In">
+                    </a>
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control">
-            <span><?php echo $this->getPassError();?></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="button-primary" value="Login">
-        </div>
-    </form>
+    </div>
 </div>
 <footer class="footer">RSS News Site created by <a href="https://github.com/romain325">Romain OLIVIER</a> and <a href="#">Augustin LABORIE</a></footer>
 </body>

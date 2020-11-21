@@ -25,6 +25,11 @@ p {
   color: var(--white-color);
 }
 
+li {
+  font-weight: 300;
+  color: var(--white-color);
+}
+
 a, a:hover {
   text-decoration: none;
   color: var(--primary-color);

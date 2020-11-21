@@ -8,7 +8,7 @@ use PDO;
 class AdminGateway extends Gateway {
 
     public function IsPasswordValid(string $username, string $password){
-        $query = "SELECT USERNAME,PASSWORD FROM `admin` WHERE username=:username";
+        $query = "SELECT ID,USERNAME,PASSWORD FROM `admin` WHERE username=:username";
         $this->con->executeQuery($query, array(':username' => array($username, PDO::PARAM_STR)));
         $result = $this->con->getResults();
         if (count($result) != 1){
