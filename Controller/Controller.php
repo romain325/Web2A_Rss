@@ -15,8 +15,11 @@ class Controller {
                     return new LoginController();
                 case "admin":
                     return new AdminController();
+                case "main":
+                    return new NewsController();
+                case "404":
                 default:
-                    return new MainController($_GET['page']);
+                    return new MainController("404");
             }
         }else{
             header("location: ./?page=main");
@@ -39,44 +42,6 @@ class Controller {
         }
         return self::$instance;
     }
-
-
-    //function __construct() {
-        //global $ViewDir,$Views;
-        //session_start();
-        /*$dVueErreur = array ();
-        try{
-            $action=$_REQUEST['action'];
-
-            switch($action) {
-
-                case NULL:
-                    $this->Reinit();
-                    break;
-
-
-                case "validationFormulaire":
-                    $this->ValidationFormulaire($dVueErreur);
-                    break;
-
-                default:
-                    $dVueErreur[] =	"Erreur d'appel php";
-                    require ($ViewDir.$Views['vuephp1']);
-                    break;
-            }
-
-        } catch (PDOException $e) {
-            //si erreur BD, pas le cas ici
-            $dVueErreur[] =	"Erreur inattendue!!! ";
-            require ($ViewDir.$Views['erreur']);
-
-        }
-        catch (Exception $e2) {
-            $dVueErreur[] =	"Erreur inattendue!!! ";
-            require ($ViewDir.$Views['erreur']);
-        }
-        exit(0);*/
-    //}
 
     function ValidationFormulaire(array $dVueEreur) {
         global $ViewDir,$Views;

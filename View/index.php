@@ -29,32 +29,12 @@
     </div>
     <div class="wrapper">
       <div class="articles">
-        <div class="article-item">
-          <h3 class="section-title"><a href="#">Fast & Light</a></h3>
-          <p>Start writing your notes immediately in any terminal! No more time wasted on navigating and opening your text editor.</p>
-          <p><small>Date</small></p>
-        </div>
-        <div class="article-item">
-          <h3 class="section-title">File Syncing</h3>
-          <p>Save your file in Dropbox then you can access to it from anywhere.</p>
-        </div>
-        <div class="article-item">
-          <h3 class="section-title">Secure</h3>
-          <p>Encrypt your notes optionally. No one can get to your secrets! </p>
-        </div>
-        <div class="article-item">
-          <h3 class="section-title">Configuration</h3>
-          <p>Maintain all your settings in a single <span class="code code-inline">config.json</span> file. Never need to redo the setting every single time jotting down a note.</p>
-          <p>16/10/2001 -- 04h30</p>
-        </div>
-        <div class="article-item">
-          <h3 class="section-title">Highlightings</h3>
-          <p>For better readability, scribbler has a clean, beautiful color scheme allow you to scan files fast.</p>
-        </div>
-        <div class="article-item">
-          <h3 class="section-title">Keybindings</h3>
-          <p>You can expect common keybindings for scribbler. Customize <span class="code code-inline">bindings.json</span> for your own liking! </p>
-        </div>
+          <?php
+            $arr = $this->getAllNews();
+            foreach ($arr as $news){
+                echo $news->toHtmlString();
+            }
+          ?>
       </div>
     </div>
     <footer class="footer">RSS News Site created by <a href="https://github.com/romain325">Romain OLIVIER</a> and <a href="#">Augustin LABORIE</a></footer>

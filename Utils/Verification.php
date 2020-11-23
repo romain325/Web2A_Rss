@@ -18,7 +18,10 @@ class Verification {
     public static function verifNews($title, $description, $link,$date) : array {
         $tmp = array();
         try {
-            $tmp["date"] = new DateTime($date);
+            if(! self::isDateTime($date)){
+                throw new Exception("Invalid Date");
+            }
+            $tmp["date"] = $date;
             $tmp["title"] = self::cleanVar($title);
             $tmp["desc"] = self::cleanVar($description);
             if(! $tmp["link"] = self::verifyUrl($link)){
@@ -26,12 +29,21 @@ class Verification {
             }
             return $tmp;
         }catch (Exception $e){
-
+            echo $e;
         }
     }
 
     private static function verifyUrl($url){
         return filter_var($url, FILTER_VALIDATE_URL);
+    }
+
+    private static function isDateTime($date){
+        return $date instanceof DateTime;
+    }
+
+
+    public static function compareDate(DateTime $a, DateTime $b){
+        return ($a < $b) ? 1 : -1;
     }
 
     private static function cleanVar($var){

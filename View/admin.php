@@ -16,7 +16,7 @@
     <div class="logo"></div>
     <ul class="menu">
         <div class="menu__item toggle"><span></span></div>
-        <li class="menu__item"><a href="./?page=main" class="link link--dark"><i class="fa fa-lock"></i> Admin</a></li>
+        <li class="menu__item"><a href="./?page=main" class="link link--dark"><i class="fa fa-home"></i> Home</a></li>
         <li class="menu__item"><a href="<?php echo Config::$Repo; ?>" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
     </ul>
 </nav>
@@ -33,12 +33,12 @@
 
             <!-- Number of article in DB -->
             <div class="lined_item login-box">
-                <form>
+                <form action="./?page=admin" method="post">
                     <div class="user-box">
                         <h2>Number of article kept in DB</h2>
                     </div>
                     <div class="user-box">
-                        <input type="text" name="" required="">
+                        <input type="text" name="nbElem" required="" value="<?php echo $this->getNbElem(); ?>">
                         <label>Number</label>
                     </div>
                     <a>

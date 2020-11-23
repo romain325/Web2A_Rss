@@ -50,8 +50,8 @@ class NewsModel {
     /**
      * @return DateTime
      */
-    public function getDate(): string{
-        return $this->date->format('Y-m-d H:i:s');
+    public function getDate(): DateTime{
+        return $this->date;
     }
 
 }

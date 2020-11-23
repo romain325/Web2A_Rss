@@ -23,6 +23,17 @@ class AdminGateway extends Gateway {
             }
         }
     }
+    
+    public function changeNbElementsKept(int $val) : bool{
+        $query = "UPDATE `parametre` SET `valeur`=:value WHERE nom='nbelem'";
+        return $this->con->executeQuery($query, array(':value' => array($val, PDO::PARAM_INT)));
+    }
+
+    public function getNbOfElementsKept() : int {
+        $query = "SELECT valeur FROM `parametre` WHERE `nom`='nbelem'";
+        $this->con->executeQuery($query);
+        return $this->con->getResults()[0]["valeur"];
+    }
 
     public function addAdmin(string $name, string $password) : bool{
         $query = "INSERT INTO `admin`(`id`, `username`, `password`) VALUES (NULL,:username,:password)";
