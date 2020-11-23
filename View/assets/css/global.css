@@ -25,6 +25,11 @@ p {
   color: var(--white-color);
 }
 
+.space hr {
+  border-color: var(--accent-color-dark);
+  border-width: 5px;
+}
+
 li {
   font-weight: 300;
   color: var(--white-color);

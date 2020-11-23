@@ -6,16 +6,17 @@ use DateTime;
 use Web2A\Utils\Verification;
 
 class NewsModel {
-    private string $title,$description ,$link;
+    private string $title,$description ,$link, $sourceLien;
     private DateTime $date;
 
-    public function __construct($title,$description,$link,$date){
-        Verification::verifNews($title, $description, $link,$date);
+    public function __construct($title,$description,$link,$date,$sourceLien){
+        Verification::verifNews($title, $description, $link,$date,$sourceLien);
 
         $this->title = $title;
         $this->description = $description;
         $this->link = $link;
         $this->date = $date;
+        $this->sourceLien = $sourceLien;
     }
 
     public function toHtmlString() : string{
@@ -23,6 +24,7 @@ class NewsModel {
                   <h3 class="section-title"><a href="' .$this->link.'">'.$this->title.'</a></h3>
                   <p>'.$this->description.'</p>
                   <p><small>'.$this->date->format("d/m/Y H:i:s").'</small></p>
+                  <p><small>Origine:<a href="'.$this->sourceLien.'">'.$this->sourceLien.'</a></small></p>
                 </div>';
     }
 
@@ -52,6 +54,13 @@ class NewsModel {
      */
     public function getDate(): DateTime{
         return $this->date;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSourceLien(): string {
+        return $this->sourceLien;
     }
 
 }

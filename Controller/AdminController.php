@@ -7,6 +7,7 @@ namespace Web2A\Controller;
 use Config;
 use Web2A\Controller\Gateway\AdminGateway;
 use Web2A\Utils\Utils;
+use Web2A\Utils\Verification;
 
 class AdminController extends Controller {
     private AdminGateway $gateway;
@@ -22,21 +23,50 @@ class AdminController extends Controller {
     }
 
     private function updateInfo(){
+        $this->checkLogout();
+
+        $this->checkPOSTRequest();
+    }
+
+    private function checkPOSTRequest(){
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nbElem = intval($_POST["nbElem"]);
+            if (isset($nbElem) && !empty(trim($nbElem))) {
+                $this->gateway->changeNbElementsKept($nbElem);
+                return;
+            }
+
+            $idSource = intval($_POST["idSource"]);
+            if (isset($idSource) && !empty(trim($idSource))) {
+                $this->gateway->removeSource($idSource);
+                return;
+            }
+
+            $newName = trim($_POST["newName"]);
+            $newLink = trim($_POST["newLink"]);
+            if (isset($newName) && isset($newLink) && !empty($newName) && !empty($newLink)) {
+                $arr = Verification::verifSource($newName,$newLink);
+                $this->gateway->addSource($arr["name"],$arr["link"]);
+                return;
+            }
+        }
+    }
+
+    private function checkLogout(){
         if(isset($_GET["logout"])){
             unset($_SESSION["loggedIn"]);
             unset($_SESSION["id"]);
             unset($_SESSION["username"]);
             header("Location: ./?page=main");
         }
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (!empty(trim($_POST["nbElem"]))) {
-                $this->gateway->changeNbElementsKept(trim($_POST["nbElem"]));
-            }
-        }
     }
 
     public function getNbElem() : int{
         return $this->gateway->getNbOfElementsKept();
+    }
+
+    public function getAllSources() : array{
+        return $this->gateway->getAllSources();
     }
 
 }

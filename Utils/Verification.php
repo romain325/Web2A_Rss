@@ -15,7 +15,7 @@ class Verification {
         return preg_match('(^mysql:host=[^;]+;dbname=[^;]+;(?:port=\d{2,4};)?(?:charset=[^;]+;)?$)', $dsn);
     }
 
-    public static function verifNews($title, $description, $link,$date) : array {
+    public static function verifNews($title, $description, $link,$date, $sourceLien) : array {
         $tmp = array();
         try {
             if(! self::isDateTime($date)){
@@ -24,6 +24,7 @@ class Verification {
             $tmp["date"] = $date;
             $tmp["title"] = self::cleanVar($title);
             $tmp["desc"] = self::cleanVar($description);
+            $tmp["source"] = self::cleanVar($sourceLien);
             if(! $tmp["link"] = self::verifyUrl($link)){
                 throw new Exception("Invalid URL");
             }
@@ -31,6 +32,15 @@ class Verification {
         }catch (Exception $e){
             echo $e;
         }
+    }
+
+    public static function verifSource($name, $link) : array{
+        $tmp = [];
+        $tmp["name"] = self::cleanVar($name);
+        if(! $tmp["link"] = self::verifyUrl($link)){
+            throw new Exception("Invalid URL");
+        }
+        return $tmp;
     }
 
     private static function verifyUrl($url){

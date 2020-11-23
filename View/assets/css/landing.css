@@ -76,12 +76,8 @@ nav {
   letter-spacing: 1px;
 }
 
-.lined_title {
-  margin-bottom: 0;
-}
-
 .lined_callout {
-  margin: 3rem auto 2rem auto;
+  margin: auto;
   text-align: center;
 }
 

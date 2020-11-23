@@ -52,20 +52,37 @@
                 </form>
             </div>
 
-            <!--
-            <div class="lined_item">
-                <div class="lined_meta">
-                    <h4 class="lined_title">v0.5</h4>
-                    <small class="changelog__date">5/10/2017</small>
-                </div>
-                <div class="lined_detail">
-                    <ul>
-                        <li>Save default md file in new folders</li>
-                        <li>Ability to quick search on existing notes</li>
-                    </ul>
-                </div>
+            <hr class="space"/>
+            <h1>Sources</h1>
+            <?php
+                foreach ($this->getAllSources() as $source){
+                    echo $source->toHtmlString();
+                }
+            ?>
+
+            <!-- Number of article in DB -->
+            <div class="lined_item login-box">
+                <form action="./?page=admin" method="post">
+                    <div class="user-box">
+                        <h2>Add New Source to the Sources list</h2>
+                    </div>
+                    <div class="user-box">
+                        <input type="text" name="newName" required="">
+                        <label>Name</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="text" name="newLink" required="">
+                        <label>Link</label>
+                    </div>
+                    <a>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <input type="submit" value="Save">
+                    </a>
+                </form>
             </div>
-            -->
 
         </div>
     </div>
