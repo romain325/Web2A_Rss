@@ -3,8 +3,10 @@
 
 namespace Web2A\Controller\Gateway;
 
+use Config;
 use PDO;
 use Web2A\Model\SourceModel;
+use Web2A\Utils\RssParser;
 
 class AdminGateway extends Gateway {
 
@@ -59,6 +61,7 @@ class AdminGateway extends Gateway {
     }
 
     public function removeSource($id){
+        if($id == 0) return;
         $query = "UPDATE `news` SET `idSource`=0 WHERE idSource=:id";
         $query2 = "DELETE FROM `source` WHERE id=:id";
         $this->con->executeQuery($query, array(':id' => array($id, PDO::PARAM_INT)));
@@ -71,5 +74,22 @@ class AdminGateway extends Gateway {
            ':name' => array($nom, PDO::PARAM_STR),
            ':link' => array($lien, PDO::PARAM_STR)
         ));
+    }
+
+    public function getSourcesCount() : int {
+        $query = "SELECT COUNT(1) FROM `source`";
+        $this->con->executeQuery($query);
+        return $this->con->getResults()[0]["COUNT(1)"];
+    }
+
+    public function reloadData($idSource){
+        if($idSource == 0) return;
+        $N = $this->getNbOfElementsKept();
+        $source = $this->getSourceLinkFromId($idSource);
+        $newsManager = new NewsGateway(Config::getDSN(), Config::$DBData["User"], Config::$DBData["Password"]);
+
+        $parser = new RssParser($source);
+        $articles = $parser->getNArticles($N);
+        $newsManager->reloadNews($articles);
     }
 }

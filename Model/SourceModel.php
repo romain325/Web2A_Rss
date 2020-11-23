@@ -14,6 +14,10 @@ class SourceModel {
         $this->id = $id;
     }
 
+    public function toSelectArgs() : string {
+        return '<option value="'.$this->id.'">'.$this->nom.'</option>';
+    }
+
     public function toHtmlString() : string {
         return '<form class="lined_item" action="./?page=admin" method="post">
                     <div class="lined_meta">

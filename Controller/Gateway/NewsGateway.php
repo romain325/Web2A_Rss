@@ -11,19 +11,10 @@ use Web2A\Model\NewsModel;
 
 class NewsGateway extends Gateway {
 
-    private function getSourceIdFromLink(string $source) : int{
-        $query= "SELECT `id` FROM `source` WHERE lien=:source";
-        $res = $this->con->executeQuery($query, array(':source' => array($source, PDO::PARAM_STR)));
-        if(!$res) return 0;
-        $res = $this->con->getResults();
-        return $res[0]["id"];
-
-    }
-
-    public function addNews(NewsModel $news) : bool{
+    private function addNews(NewsModel $news) : bool{
         $query = "INSERT INTO `news`(`id`, `datepubli`, `site`, `titre`, `description`,`idSource`) VALUES (NULL,:datepubli,:site,:titre,:description,:idSource)";
         return $this->con->executeQuery($query, array(
-            ':datepubli' => array($news->getDate(), PDO::PARAM_STR),
+            ':datepubli' => array($news->getDate()->format('Y-m-d H:i:s'), PDO::PARAM_STR),
             ':site' => array($news->getLink(), PDO::PARAM_STR),
             ':titre' => array($news->getTitle(), PDO::PARAM_STR),
             ':description' => array($news->getDescription(), PDO::PARAM_STR),
@@ -44,9 +35,16 @@ class NewsGateway extends Gateway {
         return $arr;
     }
 
-    public function removeAllNews() : bool{
+    private function removeAllNews() : bool{
         $query = "DELETE FROM `news`";
         return $this->con->executeQuery($query);
+    }
+
+    public function reloadNews($arr){
+        $this->removeAllNews();
+        foreach ($arr as $news){
+            $this->addNews($news);
+        }
     }
 
 }

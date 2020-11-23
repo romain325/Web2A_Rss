@@ -11,6 +11,7 @@ use Web2A\Utils\Verification;
 
 class AdminController extends Controller {
     private AdminGateway $gateway;
+    private $sources;
 
     public function __construct(){
         parent::__construct();
@@ -18,12 +19,14 @@ class AdminController extends Controller {
 
         $this->gateway = new AdminGateway(Config::getDSN(), Config::$DBData["User"], Config::$DBData["Password"]);
         $this->updateInfo();
+        $this->sources = $this->getAllSources();
 
         $this->renderPage("admin");
     }
 
     private function updateInfo(){
         $this->checkLogout();
+        $this->checkReload();
 
         $this->checkPOSTRequest();
     }
@@ -61,12 +64,35 @@ class AdminController extends Controller {
         }
     }
 
+    private function checkReload(){
+        if(isset($_GET["reload"])){
+            if($_SERVER["REQUEST_METHOD"] == "POST") {
+                $idSource = intval($_POST["reloadSource"]);
+                if (isset($idSource) && !empty(trim($idSource))) {
+                    $this->gateway->reloadData($idSource);
+                    return;
+                }
+            }
+        }
+    }
+
     public function getNbElem() : int{
         return $this->gateway->getNbOfElementsKept();
     }
 
-    public function getAllSources() : array{
+    private function getAllSources() : array{
         return $this->gateway->getAllSources();
+    }
+
+    /**
+     * @return array
+     */
+    public function getSources(): array{
+        return $this->sources;
+    }
+
+    private function getSourcesCount() : int {
+        return $this->gateway->getSourcesCount();
     }
 
 }

@@ -55,7 +55,7 @@
             <hr class="space"/>
             <h1>Sources</h1>
             <?php
-                foreach ($this->getAllSources() as $source){
+                foreach ($this->getSources() as $source){
                     echo $source->toHtmlString();
                 }
             ?>
@@ -80,6 +80,32 @@
                         <span></span>
                         <span></span>
                         <input type="submit" value="Save">
+                    </a>
+                </form>
+            </div>
+
+            <!-- Number of article in DB -->
+            <div class="lined_item login-box">
+                <form action="./?page=admin&reload" method="post">
+                    <div class="user-box">
+                        <h2>Reload new data</h2>
+                        <p>Choose Source</p>
+                    </div>
+                    <div class="user-box">
+                        <select name="reloadSource">
+                            <?php
+                            foreach ($this->getSources() as $source){
+                                echo $source->toSelectArgs();
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <a>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <input type="submit" value="Reload">
                     </a>
                 </form>
             </div>
