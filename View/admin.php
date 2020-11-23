@@ -17,6 +17,7 @@
     <ul class="menu">
         <div class="menu__item toggle"><span></span></div>
         <li class="menu__item"><a href="./?page=main" class="link link--dark"><i class="fa fa-home"></i> Home</a></li>
+        <li class="menu__item"><a href="./?page=admin&logout" class="link link--dark"><i class="fa fa-sign-out"></i> Logout</a></li>
         <li class="menu__item"><a href="<?php echo Config::$Repo; ?>" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
     </ul>
 </nav>

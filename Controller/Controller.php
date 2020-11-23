@@ -23,6 +23,7 @@ class Controller {
             }
         }else{
             header("location: ./?page=main");
+            die();
         }
     }
 

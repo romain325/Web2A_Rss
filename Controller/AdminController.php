@@ -22,6 +22,12 @@ class AdminController extends Controller {
     }
 
     private function updateInfo(){
+        if(isset($_GET["logout"])){
+            unset($_SESSION["loggedIn"]);
+            unset($_SESSION["id"]);
+            unset($_SESSION["username"]);
+            header("Location: ./?page=main");
+        }
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             if (!empty(trim($_POST["nbElem"]))) {
                 $this->gateway->changeNbElementsKept(trim($_POST["nbElem"]));
