@@ -3,8 +3,6 @@
 
 namespace Web2A\Utils;
 
-
-use Cassandra\Date;
 use SimpleXMLElement;
 use Web2A\Model\NewsModel;
 
