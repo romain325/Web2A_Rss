@@ -11,6 +11,8 @@ class Controller {
     public static function selectPage(){
         if(isset($_GET['page'])){
             switch ($_GET['page']){
+                case "erreur":
+                    return new ErrorController();
                 case "login":
                     return new LoginController();
                 case "admin":

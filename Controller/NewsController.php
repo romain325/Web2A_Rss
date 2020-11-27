@@ -18,9 +18,19 @@ class NewsController extends Controller {
         $this->renderPage("main");
     }
 
+    public function getNbPage(){
+        if(isset($_GET["n"])){
+            return intval($_GET["n"]);
+        }else{
+            return 1;
+        }
+    }
+
     public static function compareNewsModel(NewsModel $a, NewsModel $b){
         return Verification::compareDate($a->getDate(),$b->getDate());
     }
+
+    // TODO GET news by pagination SELECT * FROM NEWS LIMIT :debut :fin
 
     public function getAllNews() : array {
         $arr = $this->gateway->getAllNews();

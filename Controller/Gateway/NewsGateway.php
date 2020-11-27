@@ -35,6 +35,12 @@ class NewsGateway extends Gateway {
         return $arr;
     }
 
+    public function getNbNews() : int {
+        $query = "SELECT COUNT(1) FROM `news`";
+        $this->con->executeQuery($query);
+        return $this->con->getResults()["COUNT(1)"];
+    }
+
     private function removeAllNews() : bool{
         $query = "DELETE FROM `news`";
         return $this->con->executeQuery($query);

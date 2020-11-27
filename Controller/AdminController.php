@@ -33,22 +33,19 @@ class AdminController extends Controller {
 
     private function checkPOSTRequest(){
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nbElem = intval($_POST["nbElem"]);
-            if (isset($nbElem) && !empty(trim($nbElem))) {
-                $this->gateway->changeNbElementsKept($nbElem);
+            if (isset($_POST["nbElem"]) && !empty(trim($_POST["nbElem"]))) {
+                $this->gateway->changeNbElementsKept(intval($_POST["nbElem"]));
                 return;
             }
 
-            $idSource = intval($_POST["idSource"]);
-            if (isset($idSource) && !empty(trim($idSource))) {
-                $this->gateway->removeSource($idSource);
+            if (isset($_POST["idSource"]) && !empty(trim($_POST["idSource"]))) {
+                $this->gateway->removeSource(intval($_POST["idSource"]));
                 return;
             }
 
-            $newName = trim($_POST["newName"]);
-            $newLink = trim($_POST["newLink"]);
-            if (isset($newName) && isset($newLink) && !empty($newName) && !empty($newLink)) {
-                $arr = Verification::verifSource($newName,$newLink);
+
+            if (isset($_POST["newName"]) && isset($_POST["newLink"]) && !empty($_POST["newName"]) && !empty($_POST["newLink"])) {
+                $arr = Verification::verifSource(trim($_POST["newName"]),trim($_POST["newLink"]));
                 $this->gateway->addSource($arr["name"],$arr["link"]);
                 return;
             }
