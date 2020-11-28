@@ -4,6 +4,7 @@
 namespace Web2A\Controller\Gateway;
 
 
+use Config;
 use DateTime;
 use Exception;
 use PDO;
@@ -24,7 +25,7 @@ class NewsGateway extends Gateway {
 
     public function getAllNews() : array{
         $arr = [];
-        $query = "SELECT N.*, S.lien FROM `news` N, `source` S WHERE S.id = N.idSource";
+        $query = "SELECT N.*, S.lien FROM `news` N, `source` S WHERE S.id = N.idSource ORDER BY N.datepubli DESC";
         $this->con->executeQuery($query);
         foreach ($this->con->getResults() as $row){
             try {
@@ -35,10 +36,31 @@ class NewsGateway extends Gateway {
         return $arr;
     }
 
-    public function getNbNews() : int {
+    public function getNews(int $firstNews, int $nbNews) : array{
+        $arr = [];
+        $query = "SELECT N.*, S.lien FROM `news` N, `source` S WHERE S.id = N.idSource ORDER BY N.datepubli LIMIT :first, :nb";
+        $this->con->executeQuery($query, array(
+            ':first' => array($firstNews,PDO::PARAM_INT),
+            ':nb' => array($nbNews, PDO::PARAM_INT)
+        ));
+        foreach ($this->con->getResults() as $row){
+            try {
+                array_push($arr, new NewsModel($row["titre"], $row["description"], $row["site"], new DateTime($row["datepubli"]), $row["lien"]));
+            } catch (Exception $e) {
+            }
+        }
+        return $arr;
+    }
+
+
+    public function getNbPage() : int {
         $query = "SELECT COUNT(1) FROM `news`";
         $this->con->executeQuery($query);
-        return $this->con->getResults()["COUNT(1)"];
+        $value = ($this->con->getResults()[0]["COUNT(1)"] / Config::$nbPerPage);
+        if($value > intval($value)){
+            return intval($value) + 1;
+        }
+        return intval($value);
     }
 
     private function removeAllNews() : bool{

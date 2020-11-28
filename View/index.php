@@ -30,12 +30,17 @@
     <div class="wrapper">
       <div class="articles">
           <?php
-            $arr = $this->getAllNews();
+            $arr = $this->getPageNews();
             foreach ($arr as $news){
                 echo $news->toHtmlString();
             }
           ?>
       </div>
+    </div>
+    <div class="wrapper">
+        <?php
+            echo $this->getNavStr();
+        ?>
     </div>
     <footer class="footer">RSS News Site created by <a href="https://github.com/romain325">Romain OLIVIER</a> and <a href="#">Augustin LABORIE</a></footer>
   </body>

@@ -5,6 +5,8 @@ class Config {
     public static $ViewDir="View/";
     private static $AssetsDir="assets/";
 
+    public static $nbPerPage = 9;
+
     public static $Repo="https://gitlab.iut-clermont.uca.fr/roolivier1/Web2A";
 
     public static $DBData = array(
