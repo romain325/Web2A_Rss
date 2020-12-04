@@ -27,10 +27,12 @@
     </div>
 </div>
 <div class="wrapper">
-    <div class="articles">
         <?php
-        echo "erreur";
+            echo $this->getErrorMessage();
         ?>
+</div>
+<div class="wrapper">
+    <div class="articles">
     </div>
 </div>
 <footer class="footer">RSS News Site created by <a href="https://github.com/romain325">Romain OLIVIER</a> and <a href="#">Augustin LABORIE</a></footer>

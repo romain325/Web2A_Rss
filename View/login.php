@@ -29,38 +29,21 @@
 <div class="wrapper">
     <div class="lined">
         <div class="wrapper">
-
-
-            <!--
-            <h2>Login</h2>
-            <form action="<? echo "./?page=login" ?>" method="post">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" name="username" class="form-control">
-                    <span><?php echo $this->getUserError();?></span>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control">
-                    <span><?php echo $this->getPassError();?></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="button-primary" value="Login">
-                </div>
-            </form>
-            -->
-            <!-- Login FORM -->
             <div class="lined_item login-box">
                 <form action="./?page=login" method="post">
                     <div class="user-box">
+                        <h2>Login</h2>
+                    </div>
+                    <div class="user-box">
                         <input type="text" name="username" required="">
                         <label>Username</label>
-                        <span><?php echo $this->getUserError();?></span>
                     </div>
                     <div class="user-box">
                         <input type="password" name="password" required="">
                         <label>Password</label>
-                        <span><?php echo $this->getPassError();?></span>
+                    </div>
+                    <div class="user-box">
+                        <p class="error"><?php echo $this->getError(); ?></p>
                     </div>
                     <a>
                         <span></span>

@@ -2,7 +2,9 @@
 
 namespace Web2A\Model;
 
+use Config;
 use DateTime;
+use Web2A\Controller\Gateway\NewsGateway;
 use Web2A\Utils\Verification;
 
 class NewsModel {
@@ -27,6 +29,7 @@ class NewsModel {
                   <p><small>Origine:<a href="'.$this->sourceLien.'">'.$this->sourceLien.'</a></small></p>
                 </div>';
     }
+
 
     /**
      * @return string

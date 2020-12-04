@@ -50,7 +50,9 @@ hr {
   box-sizing: border-box;
 }
 
-/* global components */
+.error {
+  color: red;
+}
 
 /* typography */
 .section-title {

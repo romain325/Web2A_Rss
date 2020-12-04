@@ -4,14 +4,8 @@
 namespace Web2A\Controller;
 
 
-use Web2A\Controller\Gateway\AdminGateway;
-use Web2A\Utils\Utils;
-
 class ErrorController extends Controller {
-    private array $error = array(
-        "user" => "",
-        "pass" => ""
-    );
+    private string $errorMessage;
 
     public function __construct(){
         parent::__construct();
@@ -24,7 +18,13 @@ class ErrorController extends Controller {
     private function getInfo(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+        }else{
+            $this->errorMessage = "Unknown Error";
         }
+    }
+
+    public function getErrorMessage() : string {
+        return "<h1>".$this->errorMessage."</h1><p>We did not manage to find what was your error we're sorry !</p>";
     }
 
 
