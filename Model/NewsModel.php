@@ -2,9 +2,7 @@
 
 namespace Web2A\Model;
 
-use Config;
 use DateTime;
-use Web2A\Controller\Gateway\NewsGateway;
 use Web2A\Utils\Verification;
 
 class NewsModel {
@@ -12,13 +10,14 @@ class NewsModel {
     private DateTime $date;
 
     public function __construct($title,$description,$link,$date,$sourceLien){
-        Verification::verifNews($title, $description, $link,$date,$sourceLien);
 
-        $this->title = $title;
-        $this->description = $description;
-        $this->link = $link;
-        $this->date = $date;
-        $this->sourceLien = $sourceLien;
+        $row = Verification::verifNews($title, $description, $link, $date, $sourceLien);
+
+        $this->title = $row["title"];
+        $this->description = $row["desc"];
+        $this->link = $row["link"];
+        $this->date = $row["date"];
+        $this->sourceLien = $row["source"];
     }
 
     public function toHtmlString() : string{

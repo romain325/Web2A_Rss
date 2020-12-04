@@ -3,25 +3,29 @@
 namespace Web2A\Controller;
 
 use Config;
+use Exception;
 
 class Controller {
 
 
     public static function selectPage(){
         if(isset($_GET['page'])){
-            switch ($_GET['page']){
-                case "erreur":
-                    return new ErrorController();
-                case "login":
-                    return new LoginController();
-                case "admin":
-                    return new AdminController();
-                case "main":
-                    return new NewsController();
-                case "404":
-                default:
-                    return new MainController("404");
+            try{
+                switch ($_GET['page']){
+                    case "login":
+                        return new LoginController();
+                    case "admin":
+                        return new AdminController();
+                    case "main":
+                        return new NewsController();
+                    case "404":
+                    default:
+                        return new MainController("404");
+                }
+            }catch(Exception $e){
+                return new ErrorController($e->getMessage());
             }
+
         }else{
             header("location: ./?page=main");
             die();

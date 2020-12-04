@@ -3,6 +3,7 @@
 
 namespace Web2A\Utils;
 
+use Exception;
 use SimpleXMLElement;
 use Web2A\Model\NewsModel;
 
@@ -18,7 +19,11 @@ class RssParser {
     public function getAllArticles() : array{
         $arr = [];
         foreach ($this->parser->channel->item as $art){
-            array_push($arr, $this->modelFromArticle($art));
+            try{
+                array_push($arr, $this->modelFromArticle($art) );
+            }catch(Exception $e){
+                continue;
+            }
         }
         return $arr;
     }
@@ -27,7 +32,11 @@ class RssParser {
         $arr = [];
         for ($i = 0; $i < $n; $i++){
             $art = $this->parser->channel->item[$i];
-            array_push($arr, $this->modelFromArticle($art) );
+            try{
+                array_push($arr, $this->modelFromArticle($art) );
+            }catch(Exception $e){
+                continue;
+            }
         }
         return $arr;
     }

@@ -4,6 +4,7 @@ namespace Web2A\Utils;
 
 use DateTime;
 use Exception;
+use Web2A\Controller\ErrorController;
 
 class Verification {
 
@@ -17,21 +18,18 @@ class Verification {
 
     public static function verifNews($title, $description, $link,$date, $sourceLien) : array {
         $tmp = array();
-        try {
-            if(! self::isDateTime($date)){
-                throw new Exception("Invalid Date");
-            }
-            $tmp["date"] = $date;
-            $tmp["title"] = self::cleanVar($title);
-            $tmp["desc"] = self::cleanVar($description);
-            $tmp["source"] = self::cleanVar($sourceLien);
-            if(! $tmp["link"] = self::verifyUrl($link)){
-                throw new Exception("Invalid URL");
-            }
-            return $tmp;
-        }catch (Exception $e){
-            echo $e;
+
+        if(! self::isDateTime($date)){
+            throw new Exception("Invalid Date");
         }
+        $tmp["date"] = $date;
+        $tmp["title"] = self::cleanVar($title);
+        $tmp["desc"] = self::cleanVar($description);
+        $tmp["source"] = self::cleanVar($sourceLien);
+        if(! $tmp["link"] = self::verifyUrl($link)){
+            throw new Exception("Invalid URL");
+        }
+        return $tmp;
     }
 
     public static function verifSource($name, $link) : array{
@@ -57,7 +55,7 @@ class Verification {
     }
 
     private static function cleanVar($var){
-        return trim(htmlentities($var, ENT_QUOTES, 'UTF-8'));
+        return trim(html_entity_decode($var, ENT_QUOTES, 'UTF-8'));
     }
 
 }

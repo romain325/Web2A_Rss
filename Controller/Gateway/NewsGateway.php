@@ -29,9 +29,11 @@ class NewsGateway extends Gateway {
         $this->con->executeQuery($query);
         foreach ($this->con->getResults() as $row){
             try {
-                array_push($arr, new NewsModel($row["titre"], $row["description"], $row["site"], new DateTime($row["datepubli"]), $row["lien"]));
+                $model =new NewsModel($row["titre"], $row["description"], $row["site"], new DateTime($row["datepubli"]), $row["lien"]);
             } catch (Exception $e) {
+                continue;
             }
+            array_push($arr, $model);
         }
         return $arr;
     }
