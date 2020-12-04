@@ -51,7 +51,7 @@ CREATE TABLE `news` (
   `id` int NOT NULL,
   `datepubli` datetime NOT NULL,
   `site` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `titre` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `titre` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `description` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `idSource` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
