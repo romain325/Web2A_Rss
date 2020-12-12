@@ -2,10 +2,10 @@
 
 //chargement config
 
-require_once(__DIR__.'/Utils/Config.php');
+require_once(__DIR__ . '/Config/Config.php');
 
 //autoloader conforme norme PSR-0
-require_once(__DIR__.'/Utils/SplClassLoader.php');
+require_once(__DIR__ . '/Config/SplClassLoader.php');
 $myLibLoader = new SplClassLoader('Web2A\Controller', '../');
 $myLibLoader->register();
 $myLibLoader = new SplClassLoader('Web2A\Utils', '../');

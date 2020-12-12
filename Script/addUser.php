@@ -4,11 +4,11 @@
 
 use Web2A\Controller\Gateway\AdminGateway;
 
-require_once "../Utils/DbConnect.php";
-require_once "../Utils/Verification.php";
+require_once "../Config/DbConnect.php";
+require_once "../Config/Verification.php";
 require_once "../Controller/Gateway/Gateway.php";
 require_once "../Controller/Gateway/AdminGateway.php";
-require_once "../Utils/Config.php";
+require_once "../Config/Config.php";
 
 
 if($argv[1] == "-h"){
