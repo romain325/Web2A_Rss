@@ -8,7 +8,7 @@ require_once "../Model/NewsModel.php";
 if($argv[1] == "-h"){
     echo "./rssTest.php <Link>";
 }else{
-    $test = new \Web2A\Utils\RssParser($argv[1]);
+    $test = new \Web2A\Config\RssParser($argv[1]);
     print_r($test->getNArticles(3));
 }
 

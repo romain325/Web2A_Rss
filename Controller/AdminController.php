@@ -7,8 +7,8 @@ namespace Web2A\Controller;
 use Config;
 use Web2A\Controller\Gateway\AdminGateway;
 use Web2A\Controller\Gateway\SourceGateway;
-use Web2A\Utils\Utils;
-use Web2A\Utils\Verification;
+use Web2A\Config\Utils;
+use Web2A\Config\Verification;
 
 class AdminController extends Controller {
     private AdminGateway $gateway;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Web2A\Utils;
+namespace Web2A\Config;
 
 use DateTime;
 use Exception;

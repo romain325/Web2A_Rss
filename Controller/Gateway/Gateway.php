@@ -5,7 +5,7 @@ namespace Web2A\Controller\Gateway;
 
 
 use PDO;
-use Web2A\Utils\DbConnect;
+use Web2A\Config\DbConnect;
 
 abstract class Gateway {
 

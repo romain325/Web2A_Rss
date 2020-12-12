@@ -5,7 +5,7 @@ namespace Web2A\Controller\Gateway;
 
 use Config;
 use PDO;
-use Web2A\Utils\RssParser;
+use Web2A\Config\RssParser;
 
 class AdminGateway extends Gateway {
 

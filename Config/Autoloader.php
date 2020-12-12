@@ -1,6 +1,6 @@
 <?php
 
-namespace Web2A\Utils;
+namespace Web2A\Config;
 class Autoloader {
     private static $_instance = null;
 

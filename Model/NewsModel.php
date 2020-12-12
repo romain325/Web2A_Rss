@@ -3,7 +3,7 @@
 namespace Web2A\Model;
 
 use DateTime;
-use Web2A\Utils\Verification;
+use Web2A\Config\Verification;
 
 class NewsModel {
     public string $title,$description ,$link, $sourceLien;
