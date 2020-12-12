@@ -8,7 +8,7 @@ require_once(__DIR__ . '/Config/Config.php');
 require_once(__DIR__ . '/Config/SplClassLoader.php');
 $myLibLoader = new SplClassLoader('Web2A\Controller', '../');
 $myLibLoader->register();
-$myLibLoader = new SplClassLoader('Web2A\Utils', '../');
+$myLibLoader = new SplClassLoader('Web2A\Config', '../');
 $myLibLoader->register();
 $myLibLoader = new SplClassLoader('Web2A\Model', '../');
 $myLibLoader->register();
