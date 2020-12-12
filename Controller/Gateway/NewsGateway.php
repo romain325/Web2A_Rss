@@ -15,11 +15,11 @@ class NewsGateway extends Gateway {
     private function addNews(NewsModel $news) : bool{
         $query = "INSERT INTO `news`(`id`, `datepubli`, `site`, `titre`, `description`,`idSource`) VALUES (NULL,:datepubli,:site,:titre,:description,:idSource)";
         return $this->con->executeQuery($query, array(
-            ':datepubli' => array($news->getDate()->format('Y-m-d H:i:s'), PDO::PARAM_STR),
-            ':site' => array($news->getLink(), PDO::PARAM_STR),
-            ':titre' => array($news->getTitle(), PDO::PARAM_STR),
-            ':description' => array($news->getDescription(), PDO::PARAM_STR),
-            ':idSource' => array($this->getSourceIdFromLink($news->getSourceLien()), PDO::PARAM_STR))
+            ':datepubli' => array($news->date->format('Y-m-d H:i:s'), PDO::PARAM_STR),
+            ':site' => array($news->link, PDO::PARAM_STR),
+            ':titre' => array($news->title, PDO::PARAM_STR),
+            ':description' => array($news->description, PDO::PARAM_STR),
+            ':idSource' => array($this->getSourceIdFromLink($news->sourceLien), PDO::PARAM_STR))
         );
     }
 

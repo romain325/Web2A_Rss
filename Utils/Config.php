@@ -21,7 +21,6 @@ class Config {
         "main" => 'index.php',
         "login" => 'login.php',
         "error" => 'erreur.php',
-        "404" => '404.php',
         "admin" => 'admin.php'
     );
 

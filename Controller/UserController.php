@@ -2,36 +2,45 @@
 
 
 namespace Web2A\Controller;
-use Config;
-use Exception;
-use Web2A\Controller\Gateway\AdminGateway;
-use Web2A\Model\AdminModel;
-use Web2A\Utils\Utils;
 
-class LoginController extends Controller {
-    private string $error = "";
-    private AdminModel $adm;
+use Web2A\Model\AdminModel;
+
+class UserController extends Controller {
+    private string $authError = "";
 
     public function __construct(){
         parent::__construct();
-        Utils::checkConnected("admin");
 
-        $result = $this->getInfo();
+        switch ($_GET["page"]){
+            case "main":
+                $this->newsPage();
+                break;
+            case "login":
+                $this->loginPage();
+                break;
+            case "admin":
+            default:
+                throw new \Exception("Where are you trying to go ?");
+        }
+    }
+
+
+/** Login Section **/
+
+    private function loginPage(){
+        $result = $this->getConnexionInfo();
 
         if(is_array($result)){
             try {
                 $adm = new AdminModel($result["user"], $result["pass"]);
-            }catch (Exception $e){
-                $this->error = $e->getMessage();
+            }catch (\Exception $e){
+                $this->authError = $e->getMessage();
             }
         }
-
         $this->renderPage("login");
     }
 
-
-
-    private function getInfo(){
+    private function getConnexionInfo(){
         $user = $pass = "";
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(!empty(trim($_POST["username"]))){
@@ -55,12 +64,9 @@ class LoginController extends Controller {
         }
     }
 
-
-    /**
-     * @return string
-     */
     public function getError(): string{
-        return $this->error;
+        return $this->authError;
     }
+
 
 }

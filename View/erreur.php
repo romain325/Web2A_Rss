@@ -15,6 +15,7 @@
     <div class="logo"></div>
     <ul class="menu">
         <div class="menu__item toggle"><span></span></div>
+        <li class="menu__item"><a href="./?page=main" class="link link--dark"><i class="fa fa-home"></i> Home</a></li>
         <li class="menu__item"><a href="./?page=login" class="link link--dark"><i class="fa fa-lock"></i> Admin</a></li>
         <li class="menu__item"><a href="<?php echo Config::$Repo; ?>" class="link link--dark"><i class="fa fa-github"></i> Github</a></li>
     </ul>
@@ -28,7 +29,7 @@
 </div>
 <div class="wrapper">
         <?php
-            echo $this->getErrorMessage();
+            echo "<h1>Oops an Error!</h1><p>".\Web2A\Controller\Controller::$errorMessage."</p>";
         ?>
 </div>
 <div class="wrapper">

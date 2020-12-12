@@ -5,7 +5,6 @@ namespace Web2A\Model;
 
 
 use Config;
-use Exception;
 use Web2A\Controller\Gateway\AdminGateway;
 
 class AdminModel {
@@ -20,9 +19,9 @@ class AdminModel {
         $UserDb = new AdminGateway(Config::getDSN(), Config::$DBData["User"], Config::$DBData["Password"]);
         $result = $UserDb->IsPasswordValid($username,$password);
         if($result == "username"){
-            throw new Exception("Invalid Username");
+            throw new \Exception("Invalid Username");
         }elseif($result == "password"){
-            throw new Exception("Invalid Password");
+            throw new \Exception("Invalid Password");
         }else{
             $this->setConnected($result);
         }

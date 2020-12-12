@@ -6,21 +6,45 @@ namespace Web2A\Controller;
 
 use Config;
 use Web2A\Controller\Gateway\AdminGateway;
+use Web2A\Controller\Gateway\SourceGateway;
 use Web2A\Utils\Utils;
 use Web2A\Utils\Verification;
 
 class AdminController extends Controller {
     private AdminGateway $gateway;
+    private SourceGateway $sourceGateway;
     private $sources;
 
     public function __construct(){
         parent::__construct();
-        Utils::ejectNotConnected();
 
+        switch ($_GET["page"]){
+            case "main":
+                $this->newsPage();
+                break;
+            case "admin":
+                $this->adminPage();
+                break;
+            case "login":
+                header("location: ./?page=admin");
+                die();
+                break;
+            default:
+                throw new \Exception("Where are you trying to go ?");
+        }
+
+
+
+    }
+
+    /** AdminPanel Section **/
+
+    private function adminPage(){
         $this->gateway = new AdminGateway(Config::getDSN(), Config::$DBData["User"], Config::$DBData["Password"]);
+        $this->sourceGateway = new SourceGateway(Config::getDSN(), Config::$DBData["User"], Config::$DBData["Password"]);
+
         $this->updateInfo();
         $this->sources = $this->getAllSources();
-
         $this->renderPage("admin");
     }
 
@@ -39,14 +63,14 @@ class AdminController extends Controller {
             }
 
             if (isset($_POST["idSource"]) && !empty(trim($_POST["idSource"]))) {
-                $this->gateway->removeSource(intval($_POST["idSource"]));
+                $this->sourceGateway->removeSource(intval($_POST["idSource"]));
                 return;
             }
 
 
             if (isset($_POST["newName"]) && isset($_POST["newLink"]) && !empty($_POST["newName"]) && !empty($_POST["newLink"])) {
                 $arr = Verification::verifSource(trim($_POST["newName"]),trim($_POST["newLink"]));
-                $this->gateway->addSource($arr["name"],$arr["link"]);
+                $this->sourceGateway->addSource($arr["name"],$arr["link"]);
                 return;
             }
         }
@@ -78,18 +102,16 @@ class AdminController extends Controller {
     }
 
     private function getAllSources() : array{
-        return $this->gateway->getAllSources();
+        return $this->sourceGateway->getAllSources();
     }
 
-    /**
-     * @return array
-     */
+
     public function getSources(): array{
         return $this->sources;
     }
 
     private function getSourcesCount() : int {
-        return $this->gateway->getSourcesCount();
+        return $this->sourceGateway->getSourcesCount();
     }
 
 }
