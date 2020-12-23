@@ -1,9 +1,10 @@
 <?php
 
-namespace Web2A\Config;
+namespace Web2A\DAL;
 
 use Exception;
 use PDO;
+use Web2A\Config\Verification;
 
 class DbConnect extends PDO {
 

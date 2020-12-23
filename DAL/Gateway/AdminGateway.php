@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Web2A\Controller\Gateway;
+namespace Web2A\DAL\Gateway;
 
 use Config;
 use PDO;
-use Web2A\Config\RssParser;
+use Web2A\Parser\RssParser;
 
 class AdminGateway extends Gateway {
 

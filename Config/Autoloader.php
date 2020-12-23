@@ -1,6 +1,8 @@
 <?php
 
 namespace Web2A\Config;
+use RuntimeException;
+
 class Autoloader {
     private static $_instance = null;
 
@@ -13,7 +15,7 @@ class Autoloader {
 
 
         if(!spl_autoload_register(array(self::$_instance, '_autoload'), false)) {
-            throw RuntimeException(sprintf('%s : Could not start the autoload', __CLASS__));
+            throw new RuntimeException(sprintf('%s : Could not start the autoload', __CLASS__));
         }
     }
 

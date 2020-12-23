@@ -18,7 +18,7 @@ class Config {
 
 
     public static $Views = array(
-        "main" => 'index.php',
+        "main" => 'main.php',
         "login" => 'login.php',
         "error" => 'erreur.php',
         "admin" => 'admin.php'

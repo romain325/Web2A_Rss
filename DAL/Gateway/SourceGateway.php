@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Web2A\Controller\Gateway;
+namespace Web2A\DAL\Gateway;
 
 
 use PDO;

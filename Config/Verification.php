@@ -4,7 +4,6 @@ namespace Web2A\Config;
 
 use DateTime;
 use Exception;
-use Web2A\Controller\ErrorController;
 
 class Verification {
 

@@ -12,5 +12,9 @@ $myLibLoader = new SplClassLoader('Web2A\Config', '../');
 $myLibLoader->register();
 $myLibLoader = new SplClassLoader('Web2A\Model', '../');
 $myLibLoader->register();
+$myLibLoader = new SplClassLoader('Web2A\DAL', '../');
+$myLibLoader->register();
+$myLibLoader = new SplClassLoader('Web2A\Parser', '../');
+$myLibLoader->register();
 
 $control = \Web2A\Controller\Controller::getInstance();

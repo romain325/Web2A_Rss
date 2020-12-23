@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Web2A\Config;
+namespace Web2A\Parser;
 
 use Exception;
 use SimpleXMLElement;

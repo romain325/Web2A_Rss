@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Web2A\Controller\Gateway;
+namespace Web2A\DAL\Gateway;
 
 
 use PDO;
-use Web2A\Config\DbConnect;
+use Web2A\DAL\DbConnect;
 
 abstract class Gateway {
 

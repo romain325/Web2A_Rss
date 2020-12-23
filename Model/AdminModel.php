@@ -5,7 +5,7 @@ namespace Web2A\Model;
 
 
 use Config;
-use Web2A\Controller\Gateway\AdminGateway;
+use Web2A\DAL\Gateway\AdminGateway;
 
 class AdminModel {
     private int $id;

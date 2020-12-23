@@ -4,11 +4,10 @@ namespace Web2A\Controller;
 
 use Config;
 use Exception;
-use Web2A\Controller\Gateway\NewsGateway;
+use Web2A\DAL\Gateway\NewsGateway;
 
 class Controller {
     public static string $errorMessage = "";
-
 
     public static function selectPage(){
         session_start();
