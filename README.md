@@ -34,10 +34,10 @@ Voici un exemple de news dans un flux RSS:
 ## Repartition
 
 - LABORIE Augustin:
-    1. Création des vues
-    2. Création de la base de données
+    1. Création de la base de données
     
 - OLIVIER Romain:
-    1. Mise en place du MVC
-    2. Création de la DAL
-    3. Création de l'extraction XML
+    1. Création des vues
+    2. Mise en place du MVC
+    3. Création de la DAL
+    4. Création de l'extraction XML
